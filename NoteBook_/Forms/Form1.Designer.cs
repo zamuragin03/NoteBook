@@ -31,11 +31,11 @@ namespace NoteBook_
         {
             this.components = new System.ComponentModel.Container();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Date = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Title = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Description = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.IsDone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -47,51 +47,53 @@ namespace NoteBook_
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
+            this.Id,
+            this.Date,
+            this.Title,
+            this.Description,
+            this.IsDone});
             this.listView1.Font = new System.Drawing.Font("Segoe UI", 14.25F);
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(10, 72);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(950, 457);
+            this.listView1.Size = new System.Drawing.Size(1063, 457);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView1_ColumnClick);
             this.listView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
-            // columnHeader1
+            // Id
             // 
-            this.columnHeader1.Text = "ID";
+            this.Id.Text = "Note_Id";
+            this.Id.Width = 100;
             // 
-            // columnHeader2
+            // Date
             // 
-            this.columnHeader2.Text = "Дата";
-            this.columnHeader2.Width = 100;
+            this.Date.Text = "Date";
+            this.Date.Width = 100;
             // 
-            // columnHeader3
+            // Title
             // 
-            this.columnHeader3.Text = "Название";
-            this.columnHeader3.Width = 200;
+            this.Title.Text = "Title";
+            this.Title.Width = 199;
             // 
-            // columnHeader4
+            // Description
             // 
-            this.columnHeader4.Text = "Описание";
-            this.columnHeader4.Width = 400;
+            this.Description.Text = "Description";
+            this.Description.Width = 500;
             // 
-            // columnHeader5
+            // IsDone
             // 
-            this.columnHeader5.Text = "Выполнено";
-            this.columnHeader5.Width = 180;
+            this.IsDone.Text = "IsDone";
+            this.IsDone.Width = 180;
             // 
             // button1
             // 
             this.button1.AutoSize = true;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.button1.Location = new System.Drawing.Point(668, 28);
+            this.button1.Location = new System.Drawing.Point(790, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 35);
             this.button1.TabIndex = 1;
@@ -103,7 +105,7 @@ namespace NoteBook_
             // 
             this.button2.AutoSize = true;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 14.25F);
-            this.button2.Location = new System.Drawing.Point(844, 28);
+            this.button2.Location = new System.Drawing.Point(966, 28);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 35);
             this.button2.TabIndex = 2;
@@ -156,13 +158,14 @@ namespace NoteBook_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 542);
+            this.ClientSize = new System.Drawing.Size(1085, 542);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -174,11 +177,11 @@ namespace NoteBook_
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.ColumnHeader Date;
+        private System.Windows.Forms.ColumnHeader Title;
+        private System.Windows.Forms.ColumnHeader Description;
+        private System.Windows.Forms.ColumnHeader IsDone;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

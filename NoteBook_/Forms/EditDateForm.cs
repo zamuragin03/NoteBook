@@ -12,8 +12,8 @@ namespace NoteBook_
 {
     public partial class EditDateForm : Form
     {
-        private WorkingWithDB DB;
-        private int id;
+        private readonly WorkingWithDB DB;
+        private readonly int id;
         public EditDateForm(WorkingWithDB DB, int id, DataStructure currDataStructure)
         {
             this.DB = DB;

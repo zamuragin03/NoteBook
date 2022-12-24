@@ -12,7 +12,7 @@ namespace NoteBook_
 {
     public partial class AddDataForm : Form
     {
-        private WorkingWithDB DB;
+        private readonly WorkingWithDB DB;
         public AddDataForm(WorkingWithDB DB)
         {
             this.DB = DB;

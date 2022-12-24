@@ -10,14 +10,21 @@ namespace NoteBook_
 {
     public class WorkingWithDB
     {
-        private SQLiteConnection db;
-        SQLiteDataReader reader;
-        SQLiteCommand command;
+        private readonly SQLiteConnection db;
+        private SQLiteDataReader reader;
+        private SQLiteCommand command;
 
-        public WorkingWithDB()
+        private static readonly WorkingWithDB connection = new();
+
+        private WorkingWithDB()
         {
             db = new SQLiteConnection("Data Source = Data.db");
             db.Open();
+        }
+
+        public static WorkingWithDB GetInstance()
+        {
+            return connection;
         }
 
         public void AddData(DataStructure data)
@@ -95,6 +102,27 @@ namespace NoteBook_
         {
             List<string[]> arr = new();
             command = new SQLiteCommand($"select * from Note where Date='{date.ToShortDateString()}'", db);
+            reader = command.ExecuteReader();
+            foreach (DbDataRecord el in reader)
+            {
+                string[] tmp =
+                {
+                    el["Note_id"].ToString(),
+                    el["Date"].ToString(),
+                    el["Title"].ToString(),
+                    el["Description"].ToString(),
+                    el["IsDone"].ToString(),
+                };
+                arr.Add(tmp);
+            }
+
+            return arr;
+        }
+
+        public List<string[]> GetSortedDataByCat(string category)
+        {
+            List<string[]> arr = new();
+            command = new SQLiteCommand($"select * from Note order by {category}", db);
             reader = command.ExecuteReader();
             foreach (DbDataRecord el in reader)
             {

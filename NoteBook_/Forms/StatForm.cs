@@ -12,7 +12,7 @@ namespace NoteBook_.Forms
 {
     public partial class StatForm : Form
     {
-        private WorkingWithDB DB;
+        private readonly WorkingWithDB DB;
         private DateTime currentdate;
         public StatForm(WorkingWithDB DB)
         {

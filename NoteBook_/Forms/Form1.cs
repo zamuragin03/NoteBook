@@ -13,12 +13,12 @@ namespace NoteBook_
 {
     public partial class Form1 : Form
     {
-        private WorkingWithDB DB;
+        private readonly WorkingWithDB DB;
         public Form1()
         {
             InitializeComponent();
 
-            DB = new WorkingWithDB();
+            DB = WorkingWithDB.GetInstance();
             UpdateListView();
         }
 
@@ -50,17 +50,16 @@ namespace NoteBook_
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int id = 0;
             try
             {
-                id = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+                var id = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
                 var tst = DB.GetDataByID(id);
 
                 EditDateForm f = new(DB, id, tst);
                 f.Show();
 
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 MessageBox.Show("Не выбрана");
             }
@@ -89,6 +88,19 @@ namespace NoteBook_
                 var item = new ListViewItem(el);
                 listView1.Items.Add(item);
             }
+        }
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            var list = DB.GetSortedDataByCat(listView1.Columns[e.Column].Text);
+            listView1.Items.Clear();
+
+            foreach (var el in list)
+            {
+                var item = new ListViewItem(el);
+                listView1.Items.Add(item);
+            }
+
         }
     }
 }
